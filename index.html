@@ -871,17 +871,20 @@
         }
 
         // Ustawianie filtra - POPRAWIONE
-        function setFilter(tab, filter) {
-            currentFilter[tab] = filter;
-            
-            const buttons = event.currentTarget.parentElement.getElementsByClassName('filter-btn');
-            for (let btn of buttons) {
-                btn.classList.remove('active');
-            }
-            event.currentTarget.classList.add('active');
-            
-            displayAllConcerts();
+        function setFilter(tab, filter, event = null) {
+    currentFilter[tab] = filter;
+
+    if (event && event.currentTarget) {
+        const buttons = event.currentTarget.parentElement.getElementsByClassName('filter-btn');
+        for (let btn of buttons) {
+            btn.classList.remove('active');
         }
+        event.currentTarget.classList.add('active');
+    }
+
+    displayAllConcerts();
+}
+
 
         function getTypeName(type) {
             const types = {
