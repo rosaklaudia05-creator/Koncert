@@ -677,26 +677,23 @@
             }
         }
 
-        // Pokazywanie zakładek - POPRAWIONE
-       function showTab(event, tabName) {
-    ...
+       // Pokazywanie zakładek — NAPRAWIONE
+function showTab(event, tabName) {
+    // schowaj wszystkie treści
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    // usuń aktywność z przycisków
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+    // pokaż wybraną
+    document.getElementById(tabName).classList.add('active');
     event.currentTarget.classList.add('active');
-}
 
-            });
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            document.getElementById(tabName).classList.add('active');
-            event.currentTarget.classList.add('active');
-            
-            if (tabName === 'stats') {
-                updateStats();
-            } else {
-                displayConcerts();
-            }
-        }
+    // zaktualizuj dane jeśli to statystyki
+    if (tabName === 'stats') {
+        updateStats();
+    } else {
+        displayConcerts();
+    }
+}
 
         // Dodawanie koncertu
         document.getElementById('concertForm').addEventListener('submit', async function(e) {
@@ -869,21 +866,16 @@
                 item.style.display = text.includes(searchTerm) ? 'block' : 'none';
             }
         }
-
-        // Ustawianie filtra - POPRAWIONE
-        function setFilter(event, tab, filter) {
+// Ustawianie filtra — NAPRAWIONE
+function setFilter(event, tab, filter) {
     currentFilter[tab] = filter;
     const buttons = event.currentTarget.parentElement.getElementsByClassName('filter-btn');
-    ...
+    for (let btn of buttons) {
+        btn.classList.remove('active');
+    }
+    event.currentTarget.classList.add('active');
+    displayAllConcerts();
 }
-
-            for (let btn of buttons) {
-                btn.classList.remove('active');
-            }
-            event.currentTarget.classList.add('active');
-            
-            displayAllConcerts();
-        }
 
         function getTypeName(type) {
             const types = {
