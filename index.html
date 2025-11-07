@@ -677,9 +677,11 @@
         }
 
         // Pokazywanie zakładek - POPRAWIONE
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
+       function showTab(event, tabName) {
+    ...
+    event.currentTarget.classList.add('active');
+}
+
             });
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
