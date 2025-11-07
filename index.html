@@ -465,9 +465,10 @@
                 <input type="text" id="searchAll" placeholder="🔍 Szukaj wykonawcy, miasta..." onkeyup="filterConcerts('all')">
             </div>
             <div class="filter-buttons">
-                <button class="filter-btn active" onclick="setFilter('all', 'all')">Wszystkie</button>
-                <button class="filter-btn" onclick="setFilter('all', 'past')">Minione</button>
-                <button class="filter-btn" onclick="setFilter('all', 'future')">Nadchodzące</button>
+                <button class="filter-btn active" onclick="setFilter(event, 'all', 'all')">Wszystkie</button>
+                <button class="filter-btn" onclick="setFilter(event, 'all', 'past')">Minione</button>
+                <button class="filter-btn" onclick="setFilter(event, 'all', 'future')">Nadchodzące</button>
+
             </div>
             <div id="allConcerts"></div>
         </div>
@@ -870,10 +871,12 @@
         }
 
         // Ustawianie filtra - POPRAWIONE
-        function setFilter(tab, filter) {
-            currentFilter[tab] = filter;
-            
-            const buttons = event.currentTarget.parentElement.getElementsByClassName('filter-btn');
+        function setFilter(event, tab, filter) {
+    currentFilter[tab] = filter;
+    const buttons = event.currentTarget.parentElement.getElementsByClassName('filter-btn');
+    ...
+}
+
             for (let btn of buttons) {
                 btn.classList.remove('active');
             }
