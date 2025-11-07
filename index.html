@@ -390,11 +390,12 @@
         </header>
         
         <div class="tabs">
-            <div class="tab active" onclick="showTab('add')">➕ Dodaj</div>
-            <div class="tab" onclick="showTab('all')">📋 Wszystkie</div>
-            <div class="tab" onclick="showTab('past')">🎵 Minione</div>
-            <div class="tab" onclick="showTab('future')">🎯 Nadchodzące</div>
-            <div class="tab" onclick="showTab('stats')">📊 Statystyki</div>
+         <div class="tab active" onclick="showTab(event, 'add')">➕ Dodaj</div>
+        <div class="tab" onclick="showTab(event, 'all')">📋 Wszystkie</div>
+        <div class="tab" onclick="showTab(event, 'past')">🎵 Minione</div>
+        <div class="tab" onclick="showTab(event, 'future')">🎯 Nadchodzące</div>
+        <div class="tab" onclick="showTab(event, 'stats')">📊 Statystyki</div>
+
         </div>
         
         <!-- Formularz dodawania -->
